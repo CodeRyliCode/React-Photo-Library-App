@@ -4,8 +4,8 @@ import Photo from './Photo';
 
 const PhotoGallery = (props) => {
 
-    const photos = props.photos;
-let results = [];
+const photos = props.photos;
+let results;
 
 
 if (photos.length > 0 ) {
