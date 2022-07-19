@@ -14,13 +14,15 @@ export default class App extends Component {
   constructor() {
     super();
         this.state = {
+       
           loading: true
         };
   } 
 
   componentDidMount() {
 
-    this.performSearch() 
+    this.performSearch();
+ 
   }
 /*flickr api endpoint is https://api.flickr.com/services
 I went to the flickr api explorer page here https://www.flickr.com/services/api/
@@ -32,7 +34,8 @@ performSearch = (query = 'travel') => { fetch(`https://api.flickr.com/services/r
     .then(res => res.json())
     .then(data => {
         this.setState({
-          photos: data.photos.photo
+          photos: data.photos.photo,
+          loading: false  
         })
     })
     .catch(error => {
@@ -48,7 +51,7 @@ performSearch = (query = 'travel') => { fetch(`https://api.flickr.com/services/r
       <div className="container">
         <SearchForm onSearch={this.performSearch} />
         <Nav apiKey={apiKey} photos={ {travel: this.state.photos, penguins:this.state.photos, flowers: this.state.photos}}/>
-        <div className="main-content">
+        <div className="photo-container">
         {
           (this.state.loading)
           ? <p>Loading...</p>

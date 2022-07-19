@@ -4,13 +4,13 @@ import Photo from './Photo';
 
 const PhotoGallery = (props) => {
 
-const photos = props.photos;
+const photos = props.data;
 let results;
 
 
 if (photos.length > 0 ) {
     photos.forEach(photo => {
-        /* Photo image URL's @ https://www.flickr.com/services/api/misc.urls.html -
+    /* Photo image URL's @ https://www.flickr.com/services/api/misc.urls.html -
         You can construct the source URL to a photo once you know its ID, server ID, 
         and secret as returned by many API methods.*/
 
