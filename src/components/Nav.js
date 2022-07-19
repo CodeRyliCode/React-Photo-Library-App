@@ -1,8 +1,7 @@
 import React from "react";
-import { NavLink, Switch, Route } from "react-router-dom";
-import PhotoGallery from "./PhotoGallery";
+import { NavLink } from "react-router-dom";
 
-const Nav = ({apiKey, photos}) => {
+const Nav = () => {
   return (
     <nav className="main-nav">
       <ul>
@@ -18,13 +17,6 @@ const Nav = ({apiKey, photos}) => {
         
         </li>
       </ul>
-<Switch>
-<Route path="/" element={<PhotoGallery apiKey={apiKey} photos={photos.travel} />} />
-<Route path="/travel" element={<PhotoGallery apiKey={apiKey} photos={photos.travel} />} />
-<Route path="/penguins" element={<PhotoGallery apiKey={apiKey} photos={photos.penguins} />} />
-<Route path="/flowers" element={<PhotoGallery apiKey={apiKey} photos={photos.flowers}/>} />
-
-</Switch>
 
     </nav>
   );
