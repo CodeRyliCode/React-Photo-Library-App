@@ -1,5 +1,5 @@
 import React from 'react'
-import NotFound from './NotFound';
+import SearchNotFound from './SearchNotFound';
 import Photo from './Photo';
 
 
@@ -21,7 +21,7 @@ if (photos.length > 0 ) {
     });
 
     } else {   
-results = <NotFound />
+results = <SearchNotFound />
       
 }
 
@@ -29,7 +29,10 @@ results = <NotFound />
 
     return (
         <div className="photo-container">
-        <h2> {props.title}</h2>
+        <h3> Results for: 
+        <br></br>
+        {props.title}
+        </h3>
             <ul>
                 {results}
             </ul>

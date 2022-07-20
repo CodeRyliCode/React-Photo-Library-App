@@ -9,6 +9,7 @@ import Nav from "./Nav";
 import apiKey from "../config";
 import SearchForm from "./SearchForm";
 import PhotoGallery from "./PhotoGallery";
+import PageNotFound from "./PageNotFound";
 
 
 class App extends Component {
@@ -38,7 +39,8 @@ I went to the flickr api explorer page here https://www.flickr.com/services/api/
 and I clicked on the flickr.photos.search in 'photos' in 'API Methods' and got my
 url. rest/?method=flickr.photos.search&api_key=${apiKey}&text=fun&per_page=16&format=json&nojsoncallback=1
 */
-performSearch = (query = 'travel') => { fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${query}&max_upload_date=07%2F01%2F2022&
+performSearch = (query = 'travel') => {this.setState({loading: true});
+fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${query}&max_upload_date=07%2F01%2F2022&
     &per_page=16&format=json&nojsoncallback=1`)
     .then(res => res.json())
     .then((data) => {
@@ -77,7 +79,9 @@ performSearch = (query = 'travel') => { fetch(`https://api.flickr.com/services/r
                     <Route path="/Travel" component={() => <PhotoGallery query="Travel" title="Travel" data={this.state.travel} />} />
                     <Route path="/Penguins" component={() => <PhotoGallery query="Penguins" title="Penguins" data={this.state.penguins} />} />
                     <Route path="/Flowers" component={() => <PhotoGallery query="Flowers" title="Flowers" data={this.state.flowers} />} />
-                    <Route path="/:query" component={() => <PhotoGallery query={this.state.query} data={this.state.photos} title= {this.state.query}/>} />
+                    <Route path="/search/:query/" component={() => <PhotoGallery query={this.state.query} data={this.state.photos} title= {this.state.query}/>} />
+                    <Route component={PageNotFound} />
+
                   </Switch>
           }
         </div>
